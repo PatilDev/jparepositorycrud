@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+    <h2 th:text="${student.studentrollno} == null ? 'Add Student' : 'Edit Student'">Form</h2>
+
+    <form th:action="@{/students/save}" th:object="${student}" method="post">
+        <!-- Hidden field for ID -->
+        <input type="hidden" th:field="*{studentrollno}" />
+
+        Name: <input type="text" th:field="*{studentName}" required /><br><br>
+        Age: <input type="number" th:field="*{studentAge}" required /><br><br>
+
+        <button type="submit">💾 Save</button>
+        <a href="/students">🔙 Back</a>
+    </form>
+</body>
+</html>
